@@ -1,0 +1,19 @@
+.search {
+    /* background-color: pink; */
+    padding: 1rem 5rem;
+}
+
+.searchBar {
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 2px solid #595959;
+    outline: none;
+    width: 20%;
+    min-width: 200px;
+    box-shadow: 5px 2px 8px #c2c2c2;
+}
+
+.searchBar:focus {
+    border: 2px solid #ec7267;
+}

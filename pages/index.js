@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Layout from '../components/Layout';
 import Navbar from '../components/navbar';
 import styles from '../styles/Home.module.css';
 
@@ -30,7 +31,11 @@ export default function Home() {
 			<Navbar />
 			{/* </section> */}
 
-			<main className={styles.main}>Hacker News</main>
+			<section className={styles.layout}>
+				<Layout />
+			</section>
+
+			{/* <main className={styles.main}>Hacker News</main> */}
 
 			<footer className={styles.footer}>
 				<a
