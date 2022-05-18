@@ -2,13 +2,13 @@
     padding: 1rem 5rem;
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+    row-gap: 0rem;
 }
 
 .search {
     /* background-color: pink; */
     /* padding: 1rem 5rem; */
-    width: 30%;
+    width: 50%;
     min-width: 200px;
 }
 

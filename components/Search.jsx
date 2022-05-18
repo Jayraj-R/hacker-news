@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getStory } from '../functions/story';
+import { getSearchStories } from '../functions/story';
 import styles from '../styles/Layout.module.css';
 import AsyncSelect from 'react-select/async';
 
@@ -38,7 +38,7 @@ const Search = ({}) => {
 	const [selected, setSelected] = useState({});
 
 	async function handleSearchResult(query) {
-		await getStory({ keyWord: query }).then((data) => {
+		await getSearchStories({ keyWord: query }).then((data) => {
 			setSearchOpt(
 				data.hits.map((item) => {
 					return {

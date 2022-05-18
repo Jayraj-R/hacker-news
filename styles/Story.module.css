@@ -1,0 +1,55 @@
+.container {
+    /* background: pink; */
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.storyList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.storyCard {
+    border: 2px solid #c2c2c2;
+    padding: 1rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+}
+
+.storyCard:hover {
+    border: 2px solid #ec7267;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #cbcaca;
+    transition: all 0.2s ease-in;
+}
+
+.storyCard:hover,
+.span {
+    transform: scale(1.01);
+}
+
+.storyTitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.storyAuthor {
+    font-size: small;
+    font-weight: 300;
+}
+
+.storyCreated {
+    font-size: 0.8rem;
+    color: #a7a7a7;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
