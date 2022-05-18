@@ -1,6 +1,15 @@
+.container {
+    padding: 1rem 5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
 .search {
     /* background-color: pink; */
-    padding: 1rem 5rem;
+    /* padding: 1rem 5rem; */
+    width: 30%;
+    min-width: 200px;
 }
 
 .searchBar {
@@ -9,8 +18,7 @@
     border-radius: 8px;
     border: 2px solid #595959;
     outline: none;
-    width: 20%;
-    min-width: 200px;
+    width: 100%;
     box-shadow: 5px 2px 8px #c2c2c2;
 }
 
