@@ -1,0 +1,50 @@
+.container,
+.links {
+    background-color: transparent;
+    padding: 0.5rem 5rem;
+    background-color: #25395c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    column-gap: 1rem;
+    min-width: fit-content;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.links {
+    max-width: 500px;
+    /* background-color: pink; */
+}
+
+.navLink {
+    transition: all 0.2s ease-in;
+    position: relative;
+    line-height: 1.5rem;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    background: #ec7267;
+    bottom: -0.4rem;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0%);
+    border-radius: 8px;
+    transition: all 0.2s ease-in;
+}
+
+.navLink:hover {
+    color: #ec7267;
+    cursor: pointer;
+}
+
+.navLink:hover::after {
+    transform: translateX(-50%) scaleX(100%);
+}
