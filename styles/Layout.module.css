@@ -140,3 +140,16 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media screen and (max-width: 700px) {
+    .container {
+        /* background: pink; */
+        padding: 1rem;
+    }
+    .search {
+        width: 100%;
+    }
+    .searchOpt {
+        width: 90vw;
+    }
+}
