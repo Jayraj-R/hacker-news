@@ -33,6 +33,7 @@ const Search = ({}) => {
 		setDropDown(true);
 		handleSearchResult(keyWord);
 	}, [keyWord]);
+
 	useEffect(() => {
 		setDropDown(false);
 	}, []);

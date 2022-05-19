@@ -12,21 +12,19 @@ import Footer from '../../components/Footer';
 
 const Article = () => {
 	const router = useRouter();
-	const [ID, setID] = useState(router.query.nid);
 	const [story, setStory] = useState(undefined);
 	const [commLength, setCommLength] = useState(5);
 
 	useEffect(() => {
 		async function handleData() {
-			const data = await getStoryById(ID);
+			const data = await getStoryById(router.query.nid);
 
 			if (data) {
 				setStory(data);
-				console.log(story);
 			}
 		}
 		handleData();
-	}, []);
+	}, [router]);
 
 	function convertToPlain(string) {
 		return <div dangerouslySetInnerHTML={{ __html: string }} />;
