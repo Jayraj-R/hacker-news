@@ -28,7 +28,6 @@ const Search = ({}) => {
 						})
 				);
 			});
-			return searchOpt;
 		}
 		setDropDown(true);
 		handleSearchResult(keyWord);

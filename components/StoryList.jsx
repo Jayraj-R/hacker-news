@@ -24,7 +24,7 @@ const ArticleList = ({ keyWord }) => {
 			}
 		}
 		handleLatestStories();
-	}, []);
+	}, [keyWord]);
 
 	return (
 		<div className={styles.container}>
