@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { getStoryById } from '../../functions/story';
 import Navbar from '../../components/navbar';
@@ -16,8 +15,6 @@ const Article = () => {
 	const [ID, setID] = useState(router.query.nid);
 	const [story, setStory] = useState(undefined);
 	const [commLength, setCommLength] = useState(5);
-
-	// const { nid } = router.query;
 
 	useEffect(() => {
 		async function handleData() {
