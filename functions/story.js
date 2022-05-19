@@ -24,3 +24,13 @@ export async function getLatestStories() {
 		return null;
 	}
 }
+export async function getStoryById(id) {
+	try {
+		const { data } = await axios.get(`${BASE_URI}/items/${id}`);
+
+		return data;
+	} catch (e) {
+		console.log('Error:', e);
+		return null;
+	}
+}

@@ -1,55 +1,158 @@
 .container {
     /* background: pink; */
+    padding: 1rem 5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    min-height: 100vh;
+}
+
+.back {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    column-gap: 0.5rem;
+    height: 1.5rem;
+    width: fit-content;
+}
+
+.back p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2rem;
+    color: #3f4544;
+    width: max-content;
+    position: relative;
+}
+
+.back p::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    border-radius: 10px;
+    background-color: #3f4544;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease-in;
+}
+
+.back:hover p::after {
+    transform: scaleX(1);
+    transform-origin: right;
+}
+
+.loading {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
 }
 
-.storyList {
+.author {
+    font-weight: 500;
+    color: #fda78c;
+}
+
+.subTitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.content {
+    align-self: flex-start;
+}
+
+.value {
+    font-weight: 600;
+    color: #ec7267;
+    font-size: 1.5rem;
+}
+
+.comments {
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
 }
 
-.storyCard {
-    border: 2px solid #c2c2c2;
-    padding: 1rem;
-    border-radius: 5px;
+.commentBox {
     display: flex;
     flex-direction: column;
-    row-gap: 0.8rem;
+    padding: 1rem;
+    background-color: rgba(236, 114, 103, 0.15);
+    border-radius: 8px;
 }
 
-.storyCard:hover {
-    border: 2px solid #ec7267;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px #cbcaca;
-    transition: all 0.2s ease-in;
+.text {
+    line-height: 1rem;
+    font-size: 0.9rem;
+    padding-left: 2rem;
 }
 
-.storyCard:hover,
-.span {
-    transform: scale(1.01);
+.commentBox .author {
+    font-weight: 600;
 }
 
-.storyTitle {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-.storyAuthor {
-    font-size: small;
-    font-weight: 300;
-}
-
-.storyCreated {
+.time {
+    align-self: flex-end;
     font-size: 0.8rem;
-    color: #a7a7a7;
+    color: #969696;
+}
+
+.expand {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    column-gap: 0.5rem;
+    height: 1.5rem;
+    width: fit-content;
+}
+
+.expand p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    color: #3f4544;
+    width: max-content;
+    position: relative;
+}
+
+.expand p::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.1rem;
+    border-radius: 10px;
+    background-color: #3f4544;
+    bottom: -10%;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.2s ease-in;
+}
+
+.expand:hover p::after {
+    transform: scaleX(1);
 }
 
 .flex {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    row-gap: 1rem;
+    flex-direction: column;
 }
