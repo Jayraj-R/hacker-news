@@ -8,6 +8,10 @@ const Header = () => {
 				name='description'
 				content='Simple NextJS news catalogue to displat news regarding hackers and related.'
 			/>
+			<meta
+				http-equiv='Content-Security-Policy'
+				content='upgrade-insecure-requests'
+			/>
 			<link rel='icon' href='/favicon.ico' />
 
 			{/* Fonts */}
