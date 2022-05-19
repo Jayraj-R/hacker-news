@@ -1,84 +1,87 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getSearchStories } from '../functions/story';
 import styles from '../styles/Layout.module.css';
-import AsyncSelect from 'react-select/async';
-
-const customStyles = {
-	control: (styles, { isFocused }) => ({
-		...styles,
-		backgroundColor: '#fff',
-		fontSize: '1.1rem',
-		borderRadius: '8px',
-		border: isFocused ? '2px solid #ec7267' : '2px solid #c2c2c2',
-		outline: 'none',
-		width: '100%',
-		boxShadow: '2px 2px 5px #eee',
-		'&:hover ': {
-			border: '2px solid #ec7267',
-			cursor: 'pointer',
-		},
-	}),
-	option: (styles) => {
-		return {
-			...styles,
-			backgroundColor: '#fff',
-			color: 'black',
-			cursor: 'default',
-			'&:hover ': {
-				background: '#eee',
-				cursor: 'pointer',
-			},
-		};
-	},
-};
+import { useRouter } from 'next/router';
+// import AsyncSelect from 'react-select/async';
 
 const Search = ({}) => {
 	const [keyWord, setKeyWord] = useState('');
 	const [searchOpt, setSearchOpt] = useState([]);
 	const [selected, setSelected] = useState({});
+	const [dropDown, setDropDown] = useState(false);
+	const router = useRouter();
 
-	async function handleSearchResult(query) {
-		await getSearchStories({ keyWord: query }).then((data) => {
-			setSearchOpt(
-				data.hits.map((item) => {
-					return {
-						value: item.title,
-						label: item.title,
-						author: item.author,
-						created_at: item.created_at,
-					};
-				})
-			);
-		});
-		return searchOpt;
-	}
-
-	console.log(selected);
+	useEffect(() => {
+		async function handleSearchResult(query) {
+			await getSearchStories({ keyWord: query }).then((data) => {
+				setSearchOpt(
+					data &&
+						data.hits.map((item) => {
+							return {
+								value: item.title,
+								label: item.title,
+								author: item.author,
+								id: item.objectID,
+								created_at: item.created_at,
+							};
+						})
+				);
+			});
+			return searchOpt;
+		}
+		setDropDown(true);
+		handleSearchResult(keyWord);
+	}, [keyWord]);
+	useEffect(() => {
+		setDropDown(false);
+	}, []);
 
 	return (
-		<div>
-			<AsyncSelect
-				styles={customStyles}
-				classNamePrefix='select'
-				isSearchable={true}
-				isClearable={true}
-				cacheOptions
-				defaultOptions
-				placeHolder='Search by stories'
-				loadOptions={handleSearchResult}
-				onChange={(option, { action }) => {
-					switch (action) {
-						case 'remove-value':
-						case 'clear':
-							setKeyWord(option ? option.value : '');
-						case 'select-option':
-							setSelected(option ? option : null);
-						default:
-							break;
-					}
+		<form className={styles.search}>
+			<input
+				className={styles.searchBar}
+				type='text'
+				value={keyWord}
+				onChange={(e) => setKeyWord(e.target.value)}
+				onBlur={() => {
+					setTimeout(function () {
+						setDropDown(false);
+					}, 400);
 				}}
+				placeholder='Search a story...'
 			/>
-		</div>
+			<Link href={`/search/${keyWord}`}>
+				<button
+					className={styles.searchBtn}
+					type='submit'
+					disabled={keyWord === ''}
+				>
+					Search
+				</button>
+			</Link>
+
+			{dropDown && (
+				<section
+					className={styles.searchOpt}
+					onClick={() => {
+						setDropDown(true);
+					}}
+				>
+					{searchOpt && searchOpt.length !== 0 ? (
+						searchOpt.map((opt, ind) => {
+							return (
+								<div className={styles.opt} key={ind}>
+									<Link href={`/news/${opt.id}`}>{opt.value}</Link>
+								</div>
+							);
+						})
+					) : (
+						<div className={styles.loading}>No realted stories</div>
+					)}
+				</section>
+			)}
+		</form>
 	);
 };
 
