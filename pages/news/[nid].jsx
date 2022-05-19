@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getStoryById } from '../../functions/story';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/Navbar';
 import styles from '../../styles/Story.module.css';
 import Image from 'next/image';
 import { formateDate } from '../../functions/date';

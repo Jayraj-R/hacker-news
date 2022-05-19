@@ -2,12 +2,15 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/Navbar';
 import StoryList from '../../components/StoryList';
 import styles from '../../styles/Story.module.css';
 import leftIcon from '../../public/assets/left.svg';
 import loading from '../../public/assets/loading.svg';
 import Image from 'next/image';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/navbar';
 
 const Search = () => {
 	const router = useRouter();
