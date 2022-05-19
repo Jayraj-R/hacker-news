@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getLatestStories } from '../functions/story';
-import styles from '../styles/Story.module.css';
+import styles from '../styles/Layout.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import loading from '../public/assets/loading.svg';
+import { formateDate } from '../functions/date';
 
 const ArticleList = () => {
 	const [stories, setStories] = useState([]);
@@ -16,52 +20,32 @@ const ArticleList = () => {
 	}, []);
 	console.log(stories);
 
-	const formateDate = (data) => {
-		const date = new Date(data);
-		console.log(date);
-
-		var seconds = Math.floor((date.getTime() / 1000) % 60),
-			minutes = Math.floor((date.getTime() / (1000 * 60)) % 60),
-			hours = Math.floor((date.getTime() / (1000 * 60 * 60)) % 24);
-
-		hours = hours < 10 ? '0' + hours : hours;
-		minutes = minutes < 10 ? '0' + minutes : minutes;
-		seconds = seconds < 10 ? '0' + seconds : seconds;
-		console.log(hours, minutes, seconds);
-
-		if (hours > 24) {
-			return `${hours / 24} days ago`;
-		}
-		if (hours > 0) {
-			return `${hours} hours ago`;
-		}
-		if (minutes > 0) {
-			return `${minutes} minutes ago`;
-		}
-		if (seconds > 0) {
-			return `${seconds} seconds ago`;
-		}
-
-		return 1;
-	};
-
 	return (
 		<div className={styles.container}>
 			<h2 className={styles.title}>Latest News</h2>
 			<section className={styles.storyList}>
-				{stories.map((story) => {
-					return (
-						<div className={styles.storyCard}>
-							<span className={styles.storyTitle}>{story.title}.</span>
-							<div className={styles.flex}>
-								<span className={styles.storyAuthor}>{story.author}</span>
-								<span className={styles.storyCreated}>
-									{formateDate(story.created_at)}
-								</span>
-							</div>
-						</div>
-					);
-				})}
+				{stories.length === 0 ? (
+					<>
+						<Image src={loading} height={300} width={300} />
+						<p className={styles.loading}>Loading...</p>
+					</>
+				) : (
+					stories.map((story) => {
+						return (
+							<Link href={'/news/' + story.objectID}>
+								<div className={styles.storyCard}>
+									<span className={styles.storyTitle}>{story.title}.</span>
+									<div className={styles.flex}>
+										<span className={styles.storyAuthor}>{story.author}</span>
+										<span className={styles.storyCreated}>
+											{formateDate(story.created_at)}
+										</span>
+									</div>
+								</div>
+							</Link>
+						);
+					})
+				)}
 			</section>
 		</div>
 	);

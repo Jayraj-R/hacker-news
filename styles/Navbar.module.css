@@ -1,5 +1,4 @@
-.container,
-.links {
+.container {
     background-color: transparent;
     padding: 0.5rem 5rem;
     background-color: #25395c;
@@ -17,8 +16,10 @@
 }
 
 .links {
-    max-width: 500px;
+    /* max-width: 500px; */
     /* background-color: pink; */
+    display: flex;
+    column-gap: 1.5rem;
 }
 
 .navLink {
