@@ -56,6 +56,7 @@ const Search = ({}) => {
 					className={styles.searchBtn}
 					type='submit'
 					disabled={keyWord === ''}
+					onClick={() => setDropDown(false)}
 				>
 					Search
 				</button>

@@ -7,8 +7,9 @@ import StoryList from '../../components/StoryList';
 import styles from '../../styles/Story.module.css';
 import leftIcon from '../../public/assets/left.svg';
 import Image from 'next/image';
+import Search from '../../components/Search';
 
-const Search = () => {
+const SearchResult = () => {
 	const router = useRouter();
 	const [keyWord, setKeyWord] = useState(router.query.sid);
 
@@ -26,6 +27,10 @@ const Search = () => {
 					<Image src={leftIcon} width={18} height={18} />
 					<p>Back</p>
 				</section>
+				<section className={styles.search}>
+					<Search />
+				</section>
+
 				<StoryList keyWord={keyWord} />
 			</div>
 			<Footer />
@@ -33,4 +38,4 @@ const Search = () => {
 	);
 };
 
-export default Search;
+export default SearchResult;
