@@ -2,15 +2,11 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getSearchStories } from '../functions/story';
 import styles from '../styles/Layout.module.css';
-import { useRouter } from 'next/router';
-// import AsyncSelect from 'react-select/async';
 
 const Search = ({}) => {
 	const [keyWord, setKeyWord] = useState('');
 	const [searchOpt, setSearchOpt] = useState([]);
-	const [selected, setSelected] = useState({});
 	const [dropDown, setDropDown] = useState(false);
-	const router = useRouter();
 
 	useEffect(() => {
 		async function handleSearchResult(query) {
